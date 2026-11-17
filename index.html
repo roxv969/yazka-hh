@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pondok Pesantren Modern Al-Hikmah Digital | Smart Islamic Boarding School</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. TOP BAR: WIDGET WAKTU SALAT & KALENDER HIJRIAH OTOMATIS -->
+    <div class="top-utility-bar">
+        <div class="container utility-wrapper">
+            <div class="hijri-date">
+                <span class="gold-dot"></span>
+                <span id="hijriDisplay">Memuat Tanggal Hijriah...</span>
+                <span class="divider">|</span>
+                <span id="liveClock">00:00:00 WIB</span>
+            </div>
+            
+            <div class="prayer-times" id="prayerBar">
+                <span class="prayer-label">Jadwal Salat (WIB):</span>
+                <div class="prayer-list">
+                    <span class="prayer-item" data-time="04:15">Subuh <b>04:15</b></span>
+                    <span class="prayer-item" data-time="11:45">Dzuhur <b>11:45</b></span>
+                    <span class="prayer-item" data-time="15:05">Ashar <b>15:05</b></span>
+                    <span class="prayer-item" data-time="17:50">Maghrib <b>17:50</b></span>
+                    <span class="prayer-item" data-time="19:00">Isya <b>19:00</b></span>
+                </div>
+            </div>
+
+            <div class="agenda-countdown">
+                <span class="badge-gold">Agenda Terdekat</span>
+                <span id="countdownText">Haflah Akhirussanah & Wisuda Tahfidz: <b id="countdownTimer">00h 00j 00m</b></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR UTAMA -->
+    <header class="navbar">
+        <div class="container nav-wrapper">
+            <a href="#" class="brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 3L6 13V34H34V13L20 3Z" stroke="currentColor" stroke-width="2.5"/>
+                        <path d="M20 9C15.5 9 12 13 12 18V34H28V18C28 13 24.5 9 20 9Z" fill="var(--gold)"/>
+                        <circle cx="20" cy="6" r="2" fill="var(--gold)"/>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-title">AL-HIKMAH</span>
+                    <span class="brand-sub">Modern Islamic Boarding School</span>
+                </div>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#virtual-tour">Denah 360°</a>
+                <a href="#kalkulator">Simulasi Biaya</a>
+                <a href="#portal-wali">Portal Wali</a>
+                <a href="#jadwal-harian">Kehidupan Santri</a>
+                <a href="#galeri-karya">Karya & Prestasi</a>
+                <a href="#murottal">Pojok Kajian</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Ganti Mode Gelap/Terang" title="Mode Siang/Malam">
+                    <span class="theme-icon" id="themeIcon">🌙</span>
+                </button>
+                <a href="#kalkulator" class="btn btn-primary">Daftar PSB 2026</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION DENGAN BENTO HIGHLIGHT -->
+    <section class="hero-section">
+        <div class="calligraphy-bg" aria-hidden="true">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ</div>
+        <div class="container">
+            <div class="bento-hero">
+                <div class="bento-card hero-main">
+                    <div class="pill-tag">✨ Pendaftaran Santri Baru 2026/2027 Dibuka</div>
+                    <h1>Memadukan Sanad Keilmuan Turats, Tahfidz 30 Juz & Teknologi Masa Depan.</h1>
+                    <p>Pesantren modern berwawasan global dengan ekosistem pembelajaran 24 jam berbasis adab, sains, kecerdasan buatan (AI), dan kemandirian karakter.</p>
+                    <div class="hero-cta">
+                        <a href="#virtual-tour" class="btn btn-primary">Jelajahi Kampus 360°</a>
+                        <a href="#portal-wali" class="btn btn-outline">Demo Portal Wali Santri</a>
+                    </div>
+                </div>
+
+                <div class="bento-card hero-stat emerald-gradient">
+                    <span class="stat-Arabic">٣٠ جزء</span>
+                    <h3>Program Tahfidz Bersanad</h3>
+                    <p>Metode setoran harian terintegrasi dashboard digital wali santri secara real-time.</p>
+                    <div class="mini-stat-row">
+                        <div><strong>96%</strong><span>Lulus PTN/Timur Tengah</span></div>
+                        <div><strong>1:12</strong><span>Rasio Mentorship</span></div>
+                    </div>
+                </div>
+
+                <div class="bento-card hero-next-prayer">
+                    <div class="next-prayer-header">
+                        <span>Waktu Ibadah Berikutnya</span>
+                        <span class="live-indicator">LIVE</span>
+                    </div>
+                    <h2 id="nextPrayerName">Maghrib</h2>
+                    <p id="nextPrayerCountdown">Menuju adzan dalam 01 jam 24 menit</p>
+                    <div class="qibla-badge">🧭 Arah Kiblat: 294.2° Barat Laut</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. VIRTUAL TOUR 360° INTERAKTIF -->
+    <section id="virtual-tour" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">EKSPLORASI KAMPUS</span>
+                    <h2>Virtual Tour 360° & Denah Interaktif</h2>
+                </div>
+                <p>Klik titik hotspot pada peta kampus atau geser layar panorama 360° untuk melihat fasilitas pesantren.</p>
+            </div>
+
+            <div class="tour-grid">
+                <!-- Peta Denah dengan Titik Hotspot -->
+                <div class="campus-map-card">
+                    <div class="map-header">
+                        <strong>Peta Masterplan Pesantren (12 Hektar)</strong>
+                        <span>Klik titik emas pada denah</span>
+                    </div>
+                    <div class="map-canvas" id="campusMap">
+                        <!-- Ilustrasi SVG Peta Kampus -->
+                        <svg viewBox="0 0 600 420" class="map-svg">
+                            <rect width="600" height="420" rx="16" fill="var(--bg-map)"/>
+                            <!-- Jalan dan Taman -->
+                            <path d="M0 210 H600 M300 0 V420 M120 80 L480 340" stroke="var(--border)" stroke-width="18" stroke-linecap="round"/>
+                            <circle cx="300" cy="210" r="55" fill="var(--emerald-soft)" stroke="var(--gold)" stroke-width="2"/>
+                            <!-- Blok Bangunan -->
+                            <rect x="245" y="155" width="110" height="110" rx="20" fill="var(--emerald)" opacity="0.2"/>
+                            <rect x="60" y="50" width="140" height="90" rx="12" fill="var(--emerald)" opacity="0.15"/>
+                            <rect x="400" y="50" width="140" height="90" rx="12" fill="var(--emerald)" opacity="0.15"/>
+                            <rect x="60" y="280" width="150" height="90" rx="12" fill="var(--emerald)" opacity="0.15"/>
+                            <rect x="390" y="280" width="150" height="90" rx="12" fill="var(--emerald)" opacity="0.15"/>
+                        </svg>
+
+                        <!-- Titik Hotspot Interaktif -->
+                        <button class="map-hotspot active" style="top: 48%; left: 50%;" data-spot="masjid">
+                            <span class="pulse"></span>
+                            <span class="spot-label">1. Masjid Jami'</span>
+                        </button>
+                        <button class="map-hotspot" style="top: 22%; left: 22%;" data-spot="asrama">
+                            <span class="pulse"></span>
+                            <span class="spot-label">2. Asrama Smart Dorm</span>
+                        </button>
+                        <button class="map-hotspot" style="top: 22%; left: 78%;" data-spot="lab">
+                            <span class="pulse"></span>
+                            <span class="spot-label">3. Lab AI & Sains</span>
+                        </button>
+                        <button class="map-hotspot" style="top: 76%; left: 23%;" data-spot="perpus">
+                            <span class="pulse"></span>
+                            <span class="spot-label">4. Perpustakaan Turats</span>
+                        </button>
+                        <button class="map-hotspot" style="top: 76%; left: 77%;" data-spot="sport">
+                            <span class="pulse"></span>
+                            <span class="spot-label">5. Sunnah Sport Arena</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Layar Preview Panorama 360° -->
+                <div class="panorama-viewer-card">
+                    <div class="panorama-stage" id="panoramaStage">
+                        <div class="panorama-canvas" id="panoramaCanvas">
+                            <div class="pano-compass">🧭 Geser Kiri/Kanan untuk Mode 360° (<span id="panoDegree">180°</span>)</div>
+                            <div class="pano-art" id="panoArt"></div>
+                        </div>
+                        <div class="panorama-controls">
+                            <button class="btn-pano" id="panoLeft">◀ Putar Kiri</button>
+                            <button class="btn-pano" id="panoAuto">🔄 Auto-Rotate 360°</button>
+                            <button class="btn-pano" id="panoRight">Putar Kanan ▶</button>
+                        </div>
+                    </div>
+                    <div class="spot-details">
+                        <div class="spot-meta">
+                            <span class="badge-emerald" id="spotCategory">Pusat Ibadah & Halaqah</span>
+                            <span id="spotCapacity">Kapasitas: 2.500 Jamaah</span>
+                        </div>
+                        <h3 id="spotTitle">Masjid Jami' Al-Hikmah Center</h3>
+                        <p id="spotDesc">Masjid utama berarsitektur bioklimatik tanpa tiang tengah, dilengkapi akustik studio untuk murottal dan sirkulasi udara alami yang sejuk sepanjang hari.</p>
+                        <div class="spot-features" id="spotFeatures">
+                            <span>✓ Smart Sound System</span>
+                            <span>✓ Zona Halaqah Tahfidz</span>
+                            <span>✓ Air Wudhu Daur Ulang</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. KALKULATOR SIMULASI BIAYA PENDIDIKAN -->
+    <section id="kalkulator" class="section bg-subtle">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">TRANSPARANSI FINANSIAL</span>
+                    <h2>Kalkulator Simulasi Biaya Pendidikan</h2>
+                </div>
+                <p>Pilih jenjang pendidikan, tipe asrama, dan program unggulan untuk mendapatkan estimasi rincian investasi pendidikan secara instan.</p>
+            </div>
+
+            <div class="calculator-bento">
+                <div class="calc-controls bento-card">
+                    <div class="form-group">
+                        <label>1. Pilih Jenjang Pendidikan</label>
+                        <div class="option-pills" id="levelOptions">
+                            <button type="button" class="pill-btn active" data-level="smp">SMP Islam Terpadu</button>
+                            <button type="button" class="pill-btn" data-level="sma">SMA Sains & Tahfidz</button>
+                            <button type="button" class="pill-btn" data-level="takhassus">Takhassus Al-Qur'an & Turats</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>2. Pilih Tipe Kamar Asrama</label>
+                        <div class="option-pills" id="dormOptions">
+                            <button type="button" class="pill-btn active" data-dorm="reguler">Reguler (6 Santri/Kamar)</button>
+                            <button type="button" class="pill-btn" data-dorm="eksekutif">Smart Dorm AC (4 Santri/Kamar)</button>
+                            <button type="button" class="pill-btn" data-dorm="premier">Premier Bilingual (3 Santri/Kamar)</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>3. Program Akselerasi Tambahan (Opsional)</label>
+                        <div class="checkbox-grid">
+                            <label class="check-card">
+                                <input type="checkbox" id="addonCoding" value="650000" checked>
+                                <span>Bootcamp AI, Coding & Robotik (+Rp 650.000/smt)</span>
+                            </label>
+                            <label class="check-card">
+                                <input type="checkbox" id="addonSanad" value="500000">
+                                <span>Karantina Sanad Qira'at Sab'ah (+Rp 500.000/smt)</span>
+                            </label>
+                            <label class="check-card">
+                                <input type="checkbox" id="addonIelts" value="750000">
+                                <span>Persiapan TOAFL Arab & IELTS (+Rp 750.000/smt)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>4. Jalur Beasiswa / Potongan Prestasi</label>
+                        <select id="scholarshipSelect" class="form-select">
+                            <option value="0">Jalur Reguler (Tanpa Potongan)</option>
+                            <option value="0.15">Hafidz Minimal 5 Juz (Diskon Pangkal 15%)</option>
+                            <option value="0.30">Hafidz Minimal 15 Juz / Juara Nasional (Diskon Pangkal 30%)</option>
+                            <option value="0.50">Hafidz 30 Juz Mutqin (Diskon Pangkal 50%)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="calc-result bento-card emerald-gradient">
+                    <div class="receipt-header">
+                        <span>ESTIMASI RINCIAN BIAYA</span>
+                        <span class="badge-gold" id="selectedSummaryTag">SMP • Reguler</span>
+                    </div>
+                    <div class="receipt-body">
+                        <div class="receipt-row">
+                            <span>Infaq Pengembangan (Uang Pangkal)</span>
+                            <strong id="costPangkal">Rp 14.500.000</strong>
+                        </div>
+                        <div class="receipt-row">
+                            <span>Seragam, Kitab Turats & Smart Card</span>
+                            <strong id="costKitab">Rp 2.850.000</strong>
+                        </div>
+                        <div class="receipt-row">
+                            <span>Program Akselerasi Pilihan</span>
+                            <strong id="costAddon">Rp 650.000</strong>
+                        </div>
+                        <div class="receipt-row discount-row" id="discountRow">
+                            <span>Potongan Beasiswa Prestasi</span>
+                            <strong id="costDiscount">- Rp 0</strong>
+                        </div>
+                        <hr class="receipt-divider">
+                        <div class="receipt-total">
+                            <div>
+                                <span>Total Biaya Masuk Awal</span>
+                                <small>Dapat dicicil 3x selama semester pertama</small>
+                            </div>
+                            <h3 id="totalInitialCost">Rp 18.000.000</h3>
+                        </div>
+                        <div class="monthly-box">
+                            <span>Syahriyah Bulanan (Makan 3x, Laundry & Asrama)</span>
+                            <h4 id="monthlyCost">Rp 1.650.000 <small>/ bulan</small></h4>
+                        </div>
+                    </div>
+                    <button class="btn btn-gold full-width" id="sendSimulationToBot">Tanyakan Simulasi Ini ke Asisten PSB 💬</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. DASHBOARD MONITORING SANTRI (PREVIEW PORTAL WALI) -->
+    <section id="portal-wali" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">SMART PARENT PORTAL</span>
+                    <h2>Dashboard Monitoring Santri Real-Time</h2>
+                </div>
+                <div class="student-switcher">
+                    <span>Pilih Simulasi Profil Santri:</span>
+                    <button class="switch-btn active" data-student="0">Ahmad Zaki (Kelas 9)</button>
+                    <button class="switch-btn" data-student="1">Aisyah Humaira (Kelas 11)</button>
+                    <button class="switch-btn" data-student="2">M. Al-Fatih (Takhassus)</button>
+                </div>
+            </div>
+
+            <div class="portal-bento">
+                <!-- Kartu Identitas & Progress Tahfidz -->
+                <div class="bento-card student-profile-card">
+                    <div class="student-header">
+                        <div class="student-avatar" id="studentAvatar">AZ</div>
+                        <div>
+                            <span class="badge-emerald" id="studentClass">SMP Kelas 9A • Asrama Ibnu Sina</span>
+                            <h3 id="studentName">Ahmad Zaki Al-Farisi</h3>
+                            <p id="studentMentor">Musyrif Halaqah: Ust. H. Salman Al-Hafidz, Lc.</p>
+                        </div>
+                    </div>
+
+                    <div class="tahfidz-progress-wrap">
+                        <div class="circular-chart-box">
+                            <svg viewBox="0 0 120 120" class="circular-chart">
+                                <circle class="circle-bg" cx="60" cy="60" r="50"></circle>
+                                <circle class="circle-fill" id="tahfidzCircle" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="125"></circle>
+                            </svg>
+                            <div class="circle-label">
+                                <strong id="tahfidzJuz">18 Juz</strong>
+                                <span>dari 30 Juz</span>
+                            </div>
+                        </div>
+                        <div class="tahfidz-info">
+                            <h4>Capaian Tahfidz Al-Qur'an</h4>
+                            <p id="lastSetoran">Setoran Terakhir: <b>QS. Al-Kahfi Ayat 85-110 (Mumtaz)</b></p>
+                            <div class="target-bar-label">
+                                <span>Target Semester Ini</span>
+                                <strong id="semesterTarget">92% Tercapai</strong>
+                            </div>
+                            <div class="progress-bar-track">
+                                <div class="progress-bar-fill" id="semesterBar" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rekap Presensi Ibadah Harian -->
+                <div class="bento-card worship-card">
+                    <div class="card-title-row">
+                        <h4>Presensi Ibadah & Adab (7 Hari Terakhir)</h4>
+                        <span class="badge-gold" id="worshipScore">Skor Istiqomah: 98%</span>
+                    </div>
+                    <div class="worship-list" id="worshipList">
+                        <!-- Dirender dinamis oleh JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Dompet Digital Cashless Santri -->
+                <div class="bento-card wallet-card">
+                    <div class="wallet-top">
+                        <div>
+                            <span class="wallet-label">Saldo Smart Card Santri (Cashless)</span>
+                            <h3 id="walletBalance">Rp 425.000</h3>
+                        </div>
+                        <button class="btn btn-primary btn-sm" id="btnTopUp">+ Simulasi Top-Up Rp50rb</button>
+                    </div>
+                    <p class="wallet-limit">Batas transaksi harian kantin & koperasi: <b>Rp 35.000 / hari</b></p>
+                    <div class="transaction-list" id="transactionList">
+                        <!-- Dirender dinamis oleh JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. JADWAL HARIAN SANTRI (INTERACTIVE TIMELINE) -->
+    <section id="jadwal-harian" class="section bg-subtle">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">KURIKULUM 24 JAM</span>
+                    <h2>Linimasa Kehidupan Harian Santri</h2>
+                </div>
+                <div class="timeline-filters">
+                    <button class="filter-chip active" data-timefilter="all">Semua Waktu</button>
+                    <button class="filter-chip" data-timefilter="ibadah">Ibadah & Al-Qur'an</button>
+                    <button class="filter-chip" data-timefilter="sains">Sains, IT & Bahasa</button>
+                    <button class="filter-chip" data-timefilter="karakter">Olahraga & Karakter</button>
+                </div>
+            </div>
+
+            <div class="timeline-wrapper">
+                <div class="timeline-track" id="timelineTrack">
+                    <!-- Item Timeline dirender via JS -->
+                </div>
+                <div class="timeline-detail-card bento-card" id="timelineDetail">
+                    <span class="badge-gold" id="tlTime">03:30 - 04:45 WIB</span>
+                    <h3 id="tlTitle">Qiyamul Lail, Sahur Sunnah & Subuh Berjamaah</h3>
+                    <p id="tlDesc">Santri dibangunkan dengan lantunan tarhim lembut untuk menunaikan salat Tahajud, dzikir pagi Al-Ma'tsurat, dan salat Subuh berjamaah di Masjid Jami'.</p>
+                    <div class="balance-meter">
+                        <span>Keseimbangan Muatan Aktivitas:</span>
+                        <div class="meter-bars">
+                            <span id="tlCategoryBadge" class="badge-emerald">Spiritual & Adab (100%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. GALERI KARYA & PRESTASI FILTERABLE -->
+    <section id="galeri-karya" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag">INOVASI & TALENTA SANTRI</span>
+                    <h2>Galeri Karya & Prestasi Santri</h2>
+                </div>
+                <div class="gallery-controls">
+                    <input type="text" id="projectSearch" class="search-input" placeholder="Cari aplikasi, kitab, robotik, lomba...">
+                    <div class="category-tabs" id="galleryTabs">
+                        <button class="tab-btn active" data-cat="all">Semua</button>
+                        <button class="tab-btn" data-cat="it">Aplikasi & AI</button>
+                        <button class="tab-btn" data-cat="karya">Karya Tulis & Turats</button>
+                        <button class="tab-btn" data-cat="juara">Juara Kompetisi</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Dirender dinamis oleh JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. POJOK KAJIAN & AUDIO MUROTTAL -->
+    <section id="murottal" class="section bg-subtle">
+        <div class="container">
+            <div class="bento-audio-player">
+                <div class="audio-info-side">
+                    <span class="section-tag">POJOK KAJIAN & MUROTTAL</span>
+                    <h2>Dengarkan Lantunan Ayat Suci & Podcast Tausiyah</h2>
+                    <p>Dilengkapi <em>Built-in Ambient Harmonic Synthesizer</em> agar tetap dapat memutar simulasi lantunan frekuensi menenangkan secara langsung di browser Anda.</p>
+                    
+                    <div class="now-playing-card">
+                        <div class="soundwave" id="soundwave">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="track-meta">
+                            <span class="badge-gold" id="currentTrackType">Murottal Santri Terbaik</span>
+                            <h3 id="currentTrackTitle">QS. Ar-Rahman (Ayat 1 - 25) - Maqam Nahawand</h3>
+                            <p id="currentTrackArtist">Qari: Muhammad Al-Fatih (Santri Takhassus 30 Juz)</p>
+                        </div>
+
+                        <div class="player-progress-area">
+                            <span id="currentTimeText">00:00</span>
+                            <input type="range" id="audioSeek" value="0" min="0" max="100" class="seek-slider">
+                            <span id="totalTimeText">03:45</span>
+                        </div>
+
+                        <div class="player-buttons">
+                            <button class="ctrl-btn" id="prevTrackBtn" title="Sebelumnya">⏮</button>
+                            <button class="ctrl-btn play-main" id="playPauseBtn" title="Putar / Jeda">▶ Putar Audio</button>
+                            <button class="ctrl-btn" id="nextTrackBtn" title="Berikutnya">⏭</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="playlist-side bento-card">
+                    <h4>Daftar Rekaman Pilihan</h4>
+                    <div class="playlist-items" id="playlistContainer">
+                        <!-- Dirender dinamis oleh JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="brand">
+                    <div class="brand-text">
+                        <span class="brand-title">PONPES MODERN AL-HIKMAH</span>
+                        <span class="brand-sub">Beradab • Berilmu • Berdaya Saing Global</span>
+                    </div>
+                </div>
+                <p class="footer-desc">Jl. Raya Pendidikan Islam Terpadu Km. 12, Kawasan Lembah Hijau, Jawa Timur, Indonesia.</p>
+            </div>
+            <div class="footer-links">
+                <strong>Navigasi Cepat</strong>
+                <a href="#virtual-tour">Virtual Tour 360°</a>
+                <a href="#kalkulator">Simulasi Biaya PSB</a>
+                <a href="#portal-wali">Portal Wali Santri</a>
+                <a href="#galeri-karya">Galeri Inovasi Santri</a>
+            </div>
+            <div class="footer-contact">
+                <strong>Sekretariat PSB 2026</strong>
+                <p>WhatsApp Center: 0812-3456-7890</p>
+                <p>Email: psb@alhikmah-modern.sch.id</p>
+                <span class="badge-gold">Terakreditasi A Unggul • Kemenag & Kemendikdasmen</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 8. ASISTEN AI PENERIMAAN SANTRI BARU (PSB) FLOATING WIDGET -->
+    <div class="chatbot-wrapper" id="chatbotWrapper">
+        <button class="chatbot-fab" id="chatbotToggle" aria-label="Buka Asisten AI PSB">
+            <span class="fab-icon">🤖</span>
+            <span class="fab-text">Tanya Ust. AI (PSB 24 Jam)</span>
+        </button>
+
+        <div class="chatbot-window" id="chatbotWindow" aria-hidden="true">
+            <div class="chatbot-header">
+                <div class="bot-profile">
+                    <div class="bot-avatar">🕌</div>
+                    <div>
+                        <strong>Asisten AI PSB Al-Hikmah</strong>
+                        <span>Online 24 Jam • Respons Instan</span>
+                    </div>
+                </div>
+                <button class="chat-close" id="chatbotClose" aria-label="Tutup Chat">✕</button>
+            </div>
+
+            <div class="chatbot-messages" id="chatMessages">
+                <div class="chat-bubble bot">
+                    Assalamu'alaikum Warahmatullahi Wabarakatuh! 👋 Saya Asisten AI Penerimaan Santri Baru (PSB). Silakan pilih topik di bawah atau ketik pertanyaan seputar biaya, syarat pendaftaran, beasiswa, atau kurikulum 24 jam kami.
+                </div>
+            </div>
+
+            <div class="chat-quick-prompts">
+                <button class="prompt-chip" data-q="Rincian biaya masuk">💰 Biaya Masuk</button>
+                <button class="prompt-chip" data-q="Syarat pendaftaran santri baru">📋 Syarat Daftar</button>
+                <button class="prompt-chip" data-q="Kurikulum 24 jam & IT">📚 Kurikulum 24 Jam</button>
+                <button class="prompt-chip" data-q="Jalur beasiswa tahfidz">🎓 Info Beasiswa</button>
+            </div>
+
+            <form class="chatbot-input-area" id="chatForm">
+                <input type="text" id="chatInput" placeholder="Ketik pertanyaan Ayah/Bunda..." required autocomplete="off">
+                <button type="submit" class="btn-send">Kirim</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

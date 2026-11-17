@@ -1,0 +1,1267 @@
+/* ==========================================================================
+   DESAIN UI/UX 2026: DEEP EMERALD, TEAL, WARM IVORY & MUTED GOLD (BENTO GRID)
+   ========================================================================== */
+:root {
+    --bg-main: #FAF8F5;          /* Warm White / Ivory */
+    --bg-subtle: #F1EDE4;        /* Soft Sand */
+    --bg-card: #FFFFFF;
+    --bg-map: #E9F0EC;
+    --text-primary: #102820;     /* Deep Forest Charcoal */
+    --text-secondary: #49635B;
+    --emerald: #0B3B2E;          /* Deep Emerald Green */
+    --emerald-mid: #135D4B;      /* Modern Teal-Emerald */
+    --emerald-soft: rgba(19, 93, 75, 0.1);
+    --gold: #C6A355;             /* Muted Luxury Gold */
+    --gold-soft: rgba(198, 163, 85, 0.18);
+    --border: rgba(11, 59, 46, 0.12);
+    --shadow-sm: 0 6px 20px rgba(11, 59, 46, 0.05);
+    --shadow-md: 0 14px 34px rgba(11, 59, 46, 0.09);
+    --radius-lg: 22px;
+    --radius-md: 14px;
+    --transition: all 0.28s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* MODE GELAP (DARK MODE) DENGAN NUANSA MALAM KALIGRAFI MINIMALIS */
+[data-theme="dark"] {
+    --bg-main: #071612;          /* Deep Night Emerald */
+    --bg-subtle: #0B211B;
+    --bg-card: #102B23;
+    --bg-map: #0D251E;
+    --text-primary: #F4F1EA;
+    --text-secondary: #A5BDB4;
+    --emerald: #17705A;
+    --emerald-mid: #228B71;
+    --emerald-soft: rgba(34, 139, 113, 0.2);
+    --gold: #DFBD69;
+    --gold-soft: rgba(223, 189, 105, 0.2);
+    --border: rgba(223, 189, 105, 0.18);
+    --shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 16px 38px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background-color 0.35s ease, color 0.35s ease;
+    overflow-x: hidden;
+}
+
+.container {
+    width: min(1240px, 92%);
+    margin: 0 auto;
+}
+
+/* TOP UTILITY BAR (WAKTU SALAT & KALENDER HIJRIAH) */
+.top-utility-bar {
+    background: #07281F;
+    color: #F4F1EA;
+    font-size: 0.82rem;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(198, 163, 85, 0.25);
+}
+
+.utility-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hijri-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gold-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: inline-block;
+}
+
+.prayer-times {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.prayer-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.prayer-item {
+    padding: 2px 8px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.07);
+    transition: var(--transition);
+}
+
+.prayer-item.active-prayer {
+    background: var(--gold);
+    color: #07281F;
+    font-weight: 700;
+}
+
+.badge-gold {
+    background: var(--gold-soft);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 3px 10px;
+    border-radius: 99px;
+    font-size: 0.76rem;
+    font-weight: 600;
+}
+
+.badge-emerald {
+    background: var(--emerald-soft);
+    color: var(--text-primary);
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+/* NAVBAR */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    background: rgba(250, 248, 245, 0.86);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+[data-theme="dark"] .navbar {
+    background: rgba(7, 22, 18, 0.88);
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.brand-logo {
+    width: 40px;
+    height: 40px;
+    color: var(--emerald-mid);
+}
+
+.brand-title {
+    display: block;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    font-size: 1.05rem;
+}
+
+.brand-sub {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    border-color: var(--gold);
+    transform: rotate(12deg);
+}
+
+/* TOMBOL UMUM */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 99px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: var(--emerald);
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background: var(--emerald-mid);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1.5px solid var(--border);
+}
+
+.btn-outline:hover {
+    border-color: var(--gold);
+}
+
+.btn-gold {
+    background: var(--gold);
+    color: #09221A;
+    font-weight: 700;
+}
+
+.btn-gold:hover {
+    filter: brightness(1.07);
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* HERO SECTION & KALIGRAFI MALAM */
+.hero-section {
+    position: relative;
+    padding: 42px 0 30px;
+    overflow: hidden;
+}
+
+.calligraphy-bg {
+    position: absolute;
+    right: -2%;
+    top: 8%;
+    font-size: clamp(4rem, 11vw, 9.5rem);
+    font-family: 'Traditional Arabic', 'Amiri', serif;
+    color: var(--gold);
+    opacity: 0.07;
+    pointer-events: none;
+    user-select: none;
+}
+
+[data-theme="dark"] .calligraphy-bg {
+    opacity: 0.14;
+    text-shadow: 0 0 35px rgba(223, 189, 105, 0.35);
+}
+
+.bento-hero {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+}
+
+.bento-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.hero-main {
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+}
+
+.pill-tag {
+    align-self: flex-start;
+    background: var(--gold-soft);
+    color: var(--text-primary);
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.hero-main h1 {
+    font-size: clamp(1.85rem, 3.4vw, 2.75rem);
+    line-height: 1.2;
+}
+
+.hero-main p {
+    color: var(--text-secondary);
+    font-size: 1.03rem;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+.emerald-gradient {
+    background: linear-gradient(140deg, #0B3B2E 0%, #07241C 100%);
+    color: #F8F5EE;
+    border-color: rgba(198, 163, 85, 0.3);
+}
+
+.stat-Arabic {
+    font-size: 2rem;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.mini-stat-row {
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.mini-stat-row strong {
+    display: block;
+    font-size: 1.35rem;
+    color: var(--gold);
+}
+
+.mini-stat-row span {
+    font-size: 0.8rem;
+    opacity: 0.85;
+}
+
+.next-prayer-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+}
+
+.live-indicator {
+    background: rgba(19, 150, 95, 0.18);
+    color: #159960;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-weight: 700;
+    font-size: 0.72rem;
+}
+
+.hero-next-prayer h2 {
+    font-size: 1.8rem;
+    margin: 6px 0 2px;
+}
+
+.qibla-badge {
+    margin-top: 12px;
+    font-size: 0.82rem;
+    padding: 6px 12px;
+    border-radius: 10px;
+    background: var(--bg-subtle);
+    display: inline-block;
+}
+
+/* SECTION STANDARD */
+.section {
+    padding: 64px 0;
+}
+
+.bg-subtle {
+    background: var(--bg-subtle);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.section-tag {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 1.4px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.section-header h2 {
+    font-size: clamp(1.45rem, 2.5vw, 2rem);
+}
+
+.section-header p {
+    max-width: 480px;
+    color: var(--text-secondary);
+    font-size: 0.94rem;
+}
+
+/* 2. VIRTUAL TOUR 360° & PETA DENAH */
+.tour-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 22px;
+}
+
+.campus-map-card, .panorama-viewer-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    box-shadow: var(--shadow-sm);
+}
+
+.map-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.86rem;
+    margin-bottom: 12px;
+}
+
+.map-canvas {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.map-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.map-hotspot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: var(--emerald);
+    color: #fff;
+    border: 2px solid var(--gold);
+    padding: 6px 12px;
+    border-radius: 99px;
+    cursor: pointer;
+    font-size: 0.76rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.map-hotspot:hover, .map-hotspot.active {
+    background: var(--gold);
+    color: #07241C;
+    transform: translate(-50%, -50%) scale(1.08);
+    z-index: 3;
+}
+
+.pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.panorama-stage {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.panorama-canvas {
+    height: 250px;
+    position: relative;
+    cursor: grab;
+    overflow: hidden;
+    user-select: none;
+    background: linear-gradient(135deg, #0B3B2E, #165B49, #C6A355, #0B3B2E);
+    background-size: 300% 100%;
+    transition: background-position 0.15s ease-out;
+}
+
+.pano-compass {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(7, 22, 18, 0.75);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.76rem;
+    z-index: 2;
+}
+
+.pano-art {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.panorama-controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.btn-pano {
+    flex: 1;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-subtle);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.btn-pano:hover {
+    border-color: var(--gold);
+}
+
+.spot-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.82rem;
+}
+
+.spot-features {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    font-size: 0.82rem;
+    color: var(--emerald-mid);
+    font-weight: 600;
+}
+
+/* 3. KALKULATOR SIMULASI BIAYA */
+.calculator-bento {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 22px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.option-pills {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pill-btn {
+    flex: 1;
+    min-width: 140px;
+    padding: 11px 14px;
+    border-radius: 12px;
+    border: 1.5px solid var(--border);
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.pill-btn.active {
+    background: var(--emerald);
+    color: #fff;
+    border-color: var(--gold);
+}
+
+.checkbox-grid {
+    display: grid;
+    gap: 8px;
+}
+
+.check-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-main);
+    cursor: pointer;
+    font-size: 0.88rem;
+}
+
+.form-select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.receipt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.receipt-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 0.92rem;
+}
+
+.discount-row {
+    color: var(--gold);
+}
+
+.receipt-divider {
+    border: none;
+    border-top: 1px dashed rgba(255, 255, 255, 0.25);
+    margin: 14px 0;
+}
+
+.receipt-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.receipt-total h3 {
+    font-size: 1.65rem;
+    color: var(--gold);
+}
+
+.monthly-box {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 14px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 4. PORTAL WALI SANTRI */
+.student-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.switch-btn {
+    padding: 7px 14px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.switch-btn.active {
+    background: var(--emerald);
+    color: #fff;
+}
+
+.portal-bento {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 1fr;
+    gap: 20px;
+}
+
+.student-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.student-avatar {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    background: var(--emerald);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+
+.tahfidz-progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.circular-chart-box {
+    position: relative;
+    width: 115px;
+    height: 115px;
+    flex-shrink: 0;
+}
+
+.circular-chart {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.circle-bg {
+    fill: none;
+    stroke: var(--bg-subtle);
+    stroke-width: 10;
+}
+
+.circle-fill {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 10;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.6s ease;
+}
+
+.circle-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+
+.circle-label strong {
+    font-size: 1.1rem;
+}
+
+.progress-bar-track {
+    height: 8px;
+    background: var(--bg-subtle);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-top: 6px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: var(--emerald-mid);
+    border-radius: 99px;
+    transition: width 0.4s ease;
+}
+
+.card-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.worship-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.86rem;
+}
+
+.wallet-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.wallet-top h3 {
+    font-size: 1.55rem;
+    color: var(--emerald-mid);
+}
+
+.btn-sm {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+}
+
+.wallet-limit {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.tx-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.83rem;
+    padding: 7px 0;
+    border-bottom: 1px dashed var(--border);
+}
+
+/* 5. JADWAL HARIAN SANTRI (INTERACTIVE TIMELINE) */
+.timeline-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-chip {
+    padding: 7px 14px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.filter-chip.active {
+    background: var(--gold);
+    color: #07241C;
+}
+
+.timeline-track {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+}
+
+.timeline-node {
+    min-width: 195px;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.timeline-node.active {
+    border-color: var(--gold);
+    background: var(--emerald);
+    color: #fff;
+}
+
+.timeline-node small {
+    color: var(--gold);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.timeline-detail-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* 6. GALERI KARYA & PRESTASI */
+.gallery-controls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    padding: 9px 16px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    min-width: 240px;
+}
+
+.category-tabs {
+    display: flex;
+    gap: 6px;
+}
+
+.tab-btn {
+    padding: 8px 14px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.tab-btn.active {
+    background: var(--emerald);
+    color: #fff;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    transition: var(--transition);
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--gold);
+}
+
+/* 7. POJOK KAJIAN & AUDIO MUROTTAL */
+.bento-audio-player {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 24px;
+    align-items: center;
+}
+
+.now-playing-card {
+    margin-top: 18px;
+    background: linear-gradient(135deg, #0B3B2E, #06211A);
+    color: #fff;
+    padding: 24px;
+    border-radius: var(--radius-lg);
+}
+
+.soundwave {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 28px;
+    margin-bottom: 12px;
+}
+
+.soundwave span {
+    width: 5px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 4px;
+    transition: height 0.2s ease;
+}
+
+.soundwave.playing span {
+    animation: waveAnim 0.9s infinite ease-in-out alternate;
+}
+
+.soundwave.playing span:nth-child(2) { animation-delay: 0.15s; }
+.soundwave.playing span:nth-child(3) { animation-delay: 0.3s; }
+.soundwave.playing span:nth-child(4) { animation-delay: 0.45s; }
+.soundwave.playing span:nth-child(5) { animation-delay: 0.2s; }
+
+@keyframes waveAnim {
+    from { height: 6px; }
+    to { height: 28px; }
+}
+
+.player-progress-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 16px 0;
+    font-size: 0.8rem;
+}
+
+.seek-slider {
+    flex: 1;
+    accent-color: var(--gold);
+    cursor: pointer;
+}
+
+.player-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.ctrl-btn {
+    padding: 10px 16px;
+    border-radius: 99px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.ctrl-btn.play-main {
+    background: var(--gold);
+    color: #07241C;
+    border-color: var(--gold);
+    flex: 1;
+}
+
+.playlist-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    margin-top: 8px;
+    transition: var(--transition);
+}
+
+.playlist-item:hover, .playlist-item.active {
+    background: var(--emerald-soft);
+    border-color: var(--gold);
+}
+
+/* FOOTER */
+.footer {
+    background: #061D16;
+    color: #D7E2DD;
+    padding: 48px 0;
+    font-size: 0.9rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 28px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-links a {
+    color: #A5BDB4;
+    text-decoration: none;
+}
+
+/* 8. FLOATING AI CHATBOT PSB */
+.chatbot-wrapper {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 999;
+}
+
+.chatbot-fab {
+    background: linear-gradient(135deg, var(--emerald), #07281F);
+    color: #fff;
+    border: 2px solid var(--gold);
+    padding: 12px 20px;
+    border-radius: 99px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+.chatbot-window {
+    position: absolute;
+    right: 0;
+    bottom: 66px;
+    width: min(370px, 90vw);
+    background: var(--bg-card);
+    border: 1.5px solid var(--gold);
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chatbot-window.open {
+    display: flex;
+}
+
+.chatbot-header {
+    background: var(--emerald);
+    color: #fff;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bot-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+}
+
+.bot-profile span {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--gold);
+}
+
+.chat-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.chatbot-messages {
+    height: 265px;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-bubble {
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 0.85rem;
+    max-width: 86%;
+}
+
+.chat-bubble.bot {
+    background: var(--bg-subtle);
+    align-self: flex-start;
+}
+
+.chat-bubble.user {
+    background: var(--emerald);
+    color: #fff;
+    align-self: flex-end;
+}
+
+.chat-quick-prompts {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 6px 12px;
+    border-top: 1px solid var(--border);
+}
+
+.prompt-chip {
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-size: 0.74rem;
+    cursor: pointer;
+}
+
+.chatbot-input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid var(--border);
+    gap: 8px;
+}
+
+.chatbot-input-area input {
+    flex: 1;
+    padding: 9px 12px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    background: var(--bg-main);
+    color: var(--text-primary);
+}
+
+.btn-send {
+    background: var(--gold);
+    color: #07241C;
+    border: none;
+    padding: 0 16px;
+    border-radius: 99px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 960px) {
+    .bento-hero, .tour-grid, .calculator-bento, .portal-bento, .bento-audio-player, .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    .nav-links {
+        display: none;
+    }
+}
